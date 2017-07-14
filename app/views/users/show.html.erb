@@ -1,0 +1,28 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= image_tag(@user.image) %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ol class="posts">
+        <% @posts.each do |post| %>
+          <li>
+            <%= post.user.name %>
+            <%= link_to post.title, post_path(post) %><br>
+            Posted <%= time_ago_in_words(post.created_at) %> ago
+            <% if post.user == current_user %>
+              <%= link_to 'edit', edit_post_path(post) %>
+              <%= link_to 'delete', post_path(post), method: :delete %>
+            <% end%>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+</div>
