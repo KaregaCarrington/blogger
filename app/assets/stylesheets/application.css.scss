@@ -17,6 +17,58 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+a {
+  color: #EF7A44; 
+}
+
+body {
+  padding-top: 50px;
+}
+
+.navbar {
+  color: #EA4C27;
+}
+
 #signin {
   padding-top: 12px;
 }
+
+#sidebar {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  height: 100%;
+  background: #efeded;
+}
+
+#logo {
+  max-width: 100px;
+  position: absolute;
+  margin: 3em 3em 3em 5em;
+}
+
+#main {
+  padding-left: 300px;
+}
+
+#pic-list {
+  list-style: none;
+  float: left;
+}
+
+.users-section {
+  margin-top: 70px;
+}
+
+.post-wrapper {
+  border: 1px solid #EA4C27;
+  border-radius: 5px;
+  padding: 3px;
+  margin-bottom: 10px; 
+}
+
+
+
+
+

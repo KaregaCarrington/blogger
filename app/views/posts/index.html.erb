@@ -1,7 +1,39 @@
-<h1>All Posts</h1>
-<%= link_to 'Create New Post', new_post_path %>
-<% @posts %>
 
-<h1>All Users</h1>
-<%= link_to 'all users', users_path %>
+<div class="row">
+  <div class="col-md-5">
+    <% if logged_in %>
+      <h1>Create a Post</h1>
+      <%= render 'form' %><br>
+  <% else %>
+    <h2>Log in to create a post</h2>
+  <% end %>
+  </div><!--end of new post form-->
+
+  <div class="col-md-3">
+    <div class="panel panel-default users-section">
+      <div class="panel-heading">
+        <h3 class="panel-title">Users</h3>
+      </div>
+      <div class="panel-body">
+        <% all_users.each do |user| %>
+          <ul>
+            <li id="pic-list"><%= link_to image_tag(user.image), user_path(user) %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+    <% @posts.each do |post| %>
+      <div class="post-wrapper">
+        <h2><%= link_to post.title, post %></h2>
+        <p><%= post.created_at.strftime("%B, %d, %Y") %> By <%= post.user.name %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+  
 

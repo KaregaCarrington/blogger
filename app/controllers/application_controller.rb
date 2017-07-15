@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
     !session[:user_id].nil?
   end
 
-  helper_method :current_user, :logged_in
+  def all_users
+    @all_users = User.all
+  end
+
+  helper_method :current_user, :logged_in, :all_users
 end

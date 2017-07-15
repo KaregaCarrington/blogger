@@ -8,14 +8,26 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
+
+
     <%= render 'layouts/header' %>
-    <div class="container">
+
+    <div id="sidebar">
+      <%= link_to image_tag("https://pbs.twimg.com/profile_images/856041767220649984/dJQxT0Dz.jpg", id: "logo"), root_path %>
+    </div>
+
+
+    <div id="main">
+      <div class="container">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
+      </div>
+      <%= yield %>  
     </div>
+      
   </body>
 </html>

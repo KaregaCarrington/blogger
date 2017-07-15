@@ -1,8 +1,8 @@
-<header class="nav navbar navbar-default">
+<header class="nav navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class="pull-right">
       <% if current_user %>
-        Welcome <%= current_user.name %>! <%= image_tag(current_user.image) %>
+        Welcome   <%= current_user.name %>! <%= image_tag(current_user.image) %>
         <%= link_to 'Sign out', signout_path %>
       <% else %>
         <p id="signin"><%= link_to 'Sign in with Twitter', '/auth/twitter' %></p>
