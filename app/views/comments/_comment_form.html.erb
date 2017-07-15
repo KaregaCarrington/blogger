@@ -1,0 +1,14 @@
+<%= form_for( [@post, @post.comments.build]) do |f| %>
+
+  <p>
+    <%= image_tag(current_user.image) %>
+  </p>
+
+  <p>
+    <%= f.text_area :body, placeholder: "leave a comment" %>
+  </p>
+  <br>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

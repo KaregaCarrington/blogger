@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :sessions
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+  
   root 'posts#index'
   
 
