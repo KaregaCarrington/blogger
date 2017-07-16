@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Post</h3>
+    <h3 class="panel-title">Post!</h3>
   </div>
   
   <div class="panel-body">
@@ -10,6 +10,7 @@
       <%= form_for @post do |f| %>
         
         <p>
+          <%= image_tag current_user.image, class: 'mini-profile-image' %>
           <%= f.text_field :title, class: "form-control", placeholder: "title" %>
         </p>
         <div class="form-group">
@@ -18,7 +19,7 @@
           </p>
         </div>
         <p>
-          <%= f.submit %><br>
+          <%= f.submit 'Post', class: 'btn btn-default' %><br>
         </p>
       <% end %>
 

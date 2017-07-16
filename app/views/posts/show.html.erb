@@ -1,28 +1,42 @@
 <br>
 <br>
+<div class="row">
 
-<h2><%= @post.title %>:</h2>
+  <div class="col-md-8">
+    <h1 class="title"><%= @post.title %></h1>
+    <p><i>Posted <%= @post.created_at.strftime("%B, %d, %Y") %> By <%= @post.user.name %></i></p>
+  </div>
+
+  <div class="col-md-4">
+    <%= link_to "author profile", user_path(@post.user), class: 'btn btn-default author-button' %>
+  </div>
+</div><!--end of row-->
+
+<hr>
 
 <div class="row">
-  <div class="col-md-8 col-offset-2 post-wrapper">
+  <div class="col-md-8 col-offset-2">
     <%= @post.body %>  
   </div>
-  <br>
-    <%= link_to "author profile", user_path(@post.user), class: 'btn btn-default' %>
-    
-  <div id="comments">
-    <h2><%= @post.comments.count %>Comments</h2>
-    <%= render @post.comments %>
 
+  <br>
+  <hr>
+  <br>
+
+  <div id="comments">
+    <h2><%= @post.comments.count %> Comments</h2><br>
+    <%= render @post.comments %>
+  </div>
+
+  <div>
     <h3>Add a comment:</h3>
     <% if logged_in %>
       <%= render"comments/comment_form" %>
     <% else %>
       Please Log in to comment    
-    <% end %>
-    
-  </div>
+    <% end %>  
+  </div><br><br>
 
 
-</div>
-<br><br><br><br>
+</div><!--end of row-->
+

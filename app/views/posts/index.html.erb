@@ -1,13 +1,18 @@
 
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-5" id="new-post-form">
     <% if logged_in %>
-      <h1>Create a Post</h1>
+
       <%= render 'form' %><br>
-  <% else %>
-    <h2>Log in to create a post</h2>
-  <% end %>
+
+    <% else %>
+
+      <h2>Log in to create a post</h2>
+
+    <% end %>
   </div><!--end of new post form-->
+
+
 
   <div class="col-md-3">
     <div class="panel panel-default users-section">
@@ -29,7 +34,7 @@
   <div class="col-md-5">
     <% @posts.each do |post| %>
       <div class="post-wrapper">
-        <h2><%= link_to post.title, post %></h2>
+        <h2><%= image_tag post.user.image, class: 'mini-profile-image' %><%= link_to post.title, post %></h2>
         <p><%= post.created_at.strftime("%B, %d, %Y") %> By <%= post.user.name %></p>
       </div>
     <% end %>

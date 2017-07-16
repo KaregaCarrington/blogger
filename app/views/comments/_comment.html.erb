@@ -1,5 +1,7 @@
 <div>
-  <p><strong><%= comment.user.name %></strong></p>
+  <p><%= image_tag comment.user.image %>
+    <strong><%= comment.user.name %></strong><i>... <%= time_ago_in_words(comment.created_at) %> ago</i>
+  </p>
   <P><%= comment.body %></P>
-  <p><%= time_ago_in_words(comment.created_at) %> ago</p>
+  <br><hr><br> 
 </div>

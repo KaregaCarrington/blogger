@@ -2,27 +2,46 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= image_tag(@user.image) %>
-        <%= @user.name %>
+        <%= image_tag @user.image, id: 'main-profile-pic' %>
+        <br>
       </h1>
     </section>
   </aside>
+</div>
+<nav class="navbar navbar-default profile-bar">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><%= @user.name %></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#"></a></li>
+      <li><a href="#">Posts <%= @user.posts.count %></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#">Comments <%= @user.comments.count %></a></li>
+    </ul>
+  </div>
+</nav>
+<div class="row"> 
   <div class="col-md-8">
     <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
+      
+      <ul class="posts">
         <% @posts.each do |post| %>
+
           <li>
-            <%= post.user.name %>
-            <%= link_to post.title, post_path(post) %><br>
-            Posted <%= time_ago_in_words(post.created_at) %> ago
+            <p><hr>
+              <%= link_to post.title, post_path(post), id: 'showlink' %>
+              <p> Posted <%= time_ago_in_words(post.created_at) %> ago</p>
+            </p>  
+
             <% if post.user == current_user %>
-              <%= link_to 'edit', edit_post_path(post), data: {confirm:"Are you sure you want to edit?"} %>
+              <%= link_to 'edit', edit_post_path(post), data: {confirm:"Are you sure you want to edit?"} %> or
               <%= link_to 'delete', post_path(post), method: :delete, data: {confirm:"Are you sure you want to delete?"} %>
-            <% end%>
+            <% end%>  
           </li>
+
         <% end %>
-      </ol>
+      </ul>
     <% end %>
   </div>
 </div>
