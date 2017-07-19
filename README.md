@@ -1,24 +1,9 @@
-# README
+Vthreat Blogger
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails blog app that allows users to sign up and sign in via Twitter.
 
-Things you may want to cover:
+Project Goals
 
-* Ruby version
+To implement a blog using the Twitter API, while implementing post and commenting functionality.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+All browsers may view all posts and comments, but they must have a Twitter account to be able to post a blog entry, or make a commment on anyone's post.
