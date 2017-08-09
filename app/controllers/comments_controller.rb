@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(id: params[:post_id])
+    @comment = Post.find_by(uuid: params[:post_id]).comments.find_by(uuid: params[:id])
     @comment.destroy
-    redirect_to post_path(id: @post.uuid)
+    redirect_to post_path(id: @comment.post.uuid)
   end
 
   private
