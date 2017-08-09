@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :find_post
+  before_action :find_post, :find_comment
 
   def create
     @comment = @post.comments.create(params[:comment].permit(:body))
@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     if @comment.save
-      redirect_to post_path(@post)
+      redirect_to post_path(id: @post.uuid)
     else
       flash[:danger] = "Comment not posted"
       redirect_to post_path(@post)
@@ -16,15 +16,19 @@ class CommentsController < ApplicationController
 
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find_by(params[:uuid])
     @comment.destroy
-    redirect_to post_path(@post)
+    redirect_to post_path(id: @post.uuid)
   end
 
   private
 
+  def find_comment
+    @comment = Comment.find_by(uuid: params[:id])
+  end
+
   def find_post
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by(uuid: params[:id])
   end
 
 end

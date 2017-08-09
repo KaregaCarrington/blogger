@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(uuid: params[:id])
     @comments = Comment.where(post_id: @post).order("created_at DESC")
   end
 
@@ -25,11 +25,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by(uuid: params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by(uuid: params[:id])
 
     if @post.update(params[:post].permit(:title, :body))
       redirect_to @post
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by(uuid: params[:id])
     @post.destroy
     redirect_to user_path(current_user)
   end
@@ -48,6 +48,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-      params.require(:post).permit(:title, :body, :user_id)
-    end
+    params.require(:post).permit(:title, :body, :user_id, :uuid)
+  end
 end

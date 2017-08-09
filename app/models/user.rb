@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  before_create :create_uuid
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -13,7 +13,15 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.name = auth.info.name
       user.image = auth.info.image  
-    end
-    
+    end    
+  end
+
+
+  private
+
+  def create_uuid
+    begin
+      self.uuid = SecureRandom.uuid
+    end while self.class.exists?(:uuid => uuid)
   end
 end

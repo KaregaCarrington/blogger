@@ -8,7 +8,7 @@
   </div>
 
   <div class="col-md-4">
-    <%= link_to "author profile", user_path(@post.user), class: 'btn btn-default author-button' %>
+    <%= link_to "author profile", user_path(id: @post.user.uuid), class: 'btn btn-default author-button' %>
   </div>
 </div><!--end of row-->
 

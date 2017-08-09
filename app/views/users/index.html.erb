@@ -1,5 +1,5 @@
 <ul>
   <% @users.each do |user| %>
-    <%= link_to user.name, user_path(user) %>
+    <%= link_to user.name, user_path(user.uuid) %>
   <% end %> 
 </ul>

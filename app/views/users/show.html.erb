@@ -30,13 +30,13 @@
 
           <li>
             <p><hr>
-              <%= link_to post.title, post_path(post), id: 'showlink' %>
+              <%= link_to post.title, post_path(id: post.uuid), id: 'showlink' %>
               <p> Posted <%= time_ago_in_words(post.created_at) %> ago</p>
             </p>  
 
             <% if post.user == current_user %>
-              <%= link_to 'edit', edit_post_path(post), data: {confirm:"Are you sure you want to edit?"} %> or
-              <%= link_to 'delete', post_path(post), method: :delete, data: {confirm:"Are you sure you want to delete?"} %>
+              <%= link_to 'edit', edit_post_path(id: post.uuid), data: {confirm:"Are you sure you want to edit?"} %> or
+              <%= link_to 'delete', post_path(id: post.uuid), method: :delete, data: {confirm:"Are you sure you want to delete?"} %>
             <% end%>  
           </li>
 

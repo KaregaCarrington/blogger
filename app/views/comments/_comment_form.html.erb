@@ -5,6 +5,10 @@
   </p>
 
   <p>
+    <%= hidden_field_tag("id", @post.uuid) %>  
+  </p>
+
+  <p>
     <%= f.text_area :body, placeholder: "leave a comment" %>
   </p>
   <br>
